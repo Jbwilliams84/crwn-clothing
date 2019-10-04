@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Workers Orders</title>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="styles/style.css">
+
+</head>
+<body ng-app = "ngTest" ng-controller = "ordersController">
+
+<!-- NAV BAR -->
+
+<nav class = "navbar navbar-default">
+	<div class = "container-fluid">
+		<div class="navbar-header">
+			<a href="#" class="navbar-brand">Orders Test</a>
+		</div>
+	</div>
+</nav>
+
+	
+<div class = "container">
+	<div class = "form-row  justify-content-center">
+		<form class = "form-inline"></form>
+			<div class="form-group col-md-6 mb-2">
+    			<input type="text" class="form-control" id="workSearch" placeholder="Filter by Worker Name">
+  			</div>
+  			<button type="submit" class="btn btn-secondary mb-2" (click)= "performSearch()">Search</button>
+		</form>
+	</div>
+</div>
+
+
+<div class= "container">
+	<div class = "form-row justify-content-center">
+		<div class="btn-group btn-group-toggle" data-toggle="buttons">
+		  <label class="btn btn-secondary">
+		    <input type="radio" name="options" id="option1" autocomplete="off" ng-click = "showEarliest = true"> Earliest
+		  </label>
+		  <label class="btn btn-secondary" >
+		    <input type="radio" name="options" id="option2" autocomplete="off" ng-click = "showEarliest = false"> Latest
+		  </label>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+<div class = "container">
+		<div class = "row">
+			<div class = "col col-sm-6" ng-show = "showEarliest == true" ng-hide = "showEarliest === false" ng-repeat = "order in orders | orderBy: '-deadline'">
+				<div class = "card"  ng-if = "worker.id == order.workerId">
+					<div class = "card-header text-center">
+						<strong>{{ order.name }}</strong>
+					</div>
+					<div class="card-body text-center">
+						<h5 class= "card-title" id = "orderId"><strong>ID: </strong>{{ order.id }}</h5>
+						<p class = "card-text">{{ order.description }}</p>
+					</div>
+				
+
+				
+						<div class = "row no-gutters" id = "bio">
+							<div class = "col col-sm-6">
+								<img ng-src="{{ worker.image }}">
+							</div>
+							<div class = "col col-sm-6">
+								<div class = "card-body">
+									<h5 class = "card-title">{{worker.name}}</h5>
+									<p class = "card-text">{{ worker.companyName }}</p>
+									<p class = "card-text">{{ worker.email }}</p>
+								</div>
+								
+							</div>
+						</div>
+					
+
+					<div class="card-footer text-muted text-right">
+						{{ order.deadline * 1000 | date: 'MM/dd/yyyy HH:mm:ss Z' }}
+						
+					</div>
+				</div>
+				
+				<div class = "card"  ng-if = "worker.id != order.workerId">
+					<div class = "card-header text-center">
+						<strong>{{ order.name }}</strong>
+					</div>
+					<div class="card-body text-center">
+						<h5 class= "card-title" id = "orderId"><strong>ID: </strong>{{ order.id }}</h5>
+						<p class = "card-text">{{ order.description }}</p>
+					</div>
+						
+
+					<div class="card-footer text-muted text-right">
+						{{ order.deadline * 1000 | date: 'MM/dd/yyyy HH:mm:ss Z' }}
+						
+					</div>
+				</div>
+
+
+			</div>
+	
+		</div>
+	</div>
+
+
+
+	<div class = "container">
+		<div class = "row">
+			<div class = "col col-sm-6" ng-show = "showEarliest == false" ng-hide = "showEarliest === true" ng-repeat = "order in orders | orderBy: 'deadline'">
+				<div class = "card"  ng-if = "worker.id == order.workerId">
+					<div class = "card-header text-center">
+						<strong>{{ order.name }}</strong>
+					</div>
+					<div class="card-body text-center">
+						<h5 class= "card-title" id = "orderId"><strong>ID: </strong>{{ order.id }}</h5>
+						<p class = "card-text">{{ order.description }}</p>
+					</div>
+				
+
+				
+						<div class = "row no-gutters" id = "bio">
+							<div class = "col col-sm-6">
+								<img ng-src="{{ worker.image }}">
+							</div>
+							<div class = "col col-sm-6">
+								<div class = "card-body">
+									<h5 class = "card-title">{{worker.name}}</h5>
+									<p class = "card-text">{{ worker.companyName }}</p>
+									<p class = "card-text">{{ worker.email }}</p>
+								</div>
+								
+							</div>
+						</div>
+					
+
+					<div class="card-footer text-muted text-right">
+						{{ order.deadline * 1000 | date: 'MM/dd/yyyy HH:mm:ss Z' }}
+						
+					</div>
+				</div>
+				
+				<div class = "card"  ng-if = "worker.id != order.workerId">
+					<div class = "card-header text-center">
+						<strong>{{ order.name }}</strong>
+					</div>
+					<div class="card-body text-center">
+						<h5 class= "card-title" id = "orderId"><strong>ID: </strong>{{ order.id }}</h5>
+						<p class = "card-text">{{ order.description }}</p>
+					</div>
+						
+
+					<div class="card-footer text-muted text-right">
+						{{ order.deadline * 1000 | date: 'MM/dd/yyyy HH:mm:ss Z' }}
+						
+					</div>
+				</div>
+
+
+			</div>
+	
+		</div>
+	</div>
+
+
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
+
+<script src="app.js"></script>
+<script src="scripts/ordersController.js"></script>
+<script src="scripts/ordersFactory.js"></script>
+<script src="scripts/ordersFilter"></script>
+</html>

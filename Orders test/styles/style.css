@@ -1,0 +1,51 @@
+.card {
+	margin-bottom: 20px;
+}
+
+img {
+	width: 125px;
+	height: auto;
+	margin: 0 0 15px 30px;
+	border-radius: 50%;
+	padding: auto;
+
+}
+
+#bio {
+	padding: 0;
+	line-height: 1;
+	margin-top: 20px;
+	margin-bottom: 0px;
+}
+
+#orderId {
+	text-transform: uppercase;
+}
+
+.form-row {
+	padding-top: 25px;
+	margin-bottom: 25px;
+
+}
+
+.card-footer {
+	font-size: .5rem;
+}
+
+
+@media screen and (max-width: 800px) and (min-width: 575px){
+	#bio {
+		display: inline-block;
+		margin: 0;
+		width: 400px;
+	}
+}
+
+@media screen and (max-width: 574px) {
+	#bio {
+		display: inline-flex;
+		margin: 0;
+		width: 400px;
+	}
+}
+
