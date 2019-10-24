@@ -1,0 +1,13 @@
+{
+    "folders": [
+		{
+			"path": "crwn-clothing"
+		},
+		{
+			"path": "crwn-clothing/src"
+		}
+	],
+    "settings": {
+        "git.ignoreLimitWarning": true
+    }
+}
